@@ -1,0 +1,16 @@
+{
+  "name": "issue",
+  "private": true,
+  "scripts": {
+    "start": "meteor run --port 6000"
+  },
+  "meteor": {
+    "mainModule": {
+      "server": "app.js"
+    }
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.11.2",
+    "meteor-node-stubs": "^1.0.1"
+  }
+}
