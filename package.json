@@ -2,7 +2,7 @@
   "name": "issue",
   "private": true,
   "scripts": {
-    "start": "meteor run --port 6000"
+    "start": "meteor run --port 9000 --settings=./settings.json"
   },
   "meteor": {
     "mainModule": {

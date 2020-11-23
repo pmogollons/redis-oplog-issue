@@ -1,0 +1,7 @@
+{
+  "redisOplog": {
+    "redis": {
+      "globalRedisPrefix": "LOCAL:"
+    }
+  }
+}
