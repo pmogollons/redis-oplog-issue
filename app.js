@@ -1,8 +1,52 @@
+import SimpleSchema from 'simpl-schema';
 import { Mongo } from 'meteor/mongo';
 
 
 export const Assemblies = new Mongo.Collection('assemblies');
 
+const schema = new SimpleSchema({
+  field0: {
+    type: String,
+    optional: true
+  },
+  object: {
+    type: Object,
+    optional: true,
+    blackbox: true
+  },
+  userId: {
+    type: SimpleSchema.RegEx.Id,
+    autoValue() {
+      if (this.isInsert) {
+        return this.userId;
+      } else if (this.isUpsert) {
+        return { $setOnInsert: this.userId };
+      }
+
+      this.unset();
+    }
+  },
+  createdAt: {
+    type: Date,
+    autoValue() {
+      if (this.isInsert) {
+        return new Date();
+      } else if (this.isUpsert) {
+        return { $setOnInsert: new Date() };
+      }
+
+      this.unset();
+    }
+  },
+  updatedAt: {
+    type: Date,
+    autoValue() {
+      return new Date();
+    }
+  }
+});
+
+Assemblies.attachSchema(schema);
 
 Assemblies.startCaching();
 
